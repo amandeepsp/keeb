@@ -3,26 +3,66 @@ meta:
   engine: 4.1.0
   version: 0.0.1
   author: Amandeep Singh (@amandeepsp)
-units:
-  # Proxy spacing variables
-  kx: cx
-  ky: cy
-  # Padding variables
-  px: kx + 2
-  py: ky + 2
 points:
   zones:
     matrix:
       columns:
-        outers:
         pinky:
-        ring:
-        middle:
-        index:
-        inner:
+        ring.key.stagger: 0.75u
+        middle.key.stagger: 0.25u
+        index.key.stagger: -0.25u
+        inner.key.stagger: -0.25u
       rows:
-        mod:
-        bottom:
-        home:
-        top:
-        num:
+        bottom.padding: u
+        home.padding: u
+        top.padding: u
+    thumb:
+      anchor:
+        ref: matrix_index_bottom
+        shift: [0.75u, -1.50u]
+        rotate: -10
+      columns:
+        tucky:
+          key.name: thumb_tucky
+        reachy:
+          key:
+            spread: u
+            splay: -15
+            origin: [-0.5u, -0.5u]
+            name: thumb_reachy
+pcbs:
+  board:
+    template: kicad8
+    footprints:
+      keys:
+        what: choc
+        where: true
+        params:
+          from: GND
+          to: '{{name}}'
+          reverse: true
+          keycaps: true
+      mcu:
+        what: promicro
+        where:
+          - ref: matrix_inner_home
+            shift: [1u, 0.5u]
+            rotate: -90
+        params:
+          P7: matrix_pinky_top
+          P18: matrix_ring_top
+          P19: matrix_middle_top
+          P20: matrix_index_top
+          P21: matrix_inner_top
+          P15: matrix_pinky_home
+          P14: matrix_ring_home
+          P16: matrix_middle_home
+          P10: matrix_index_home
+          P1: matrix_inner_home
+          P2: matrix_pinky_bottom
+          P3: matrix_ring_bottom
+          P4: matrix_middle_bottom
+          P5: matrix_index_bottom
+          P6: matrix_inner_bottom
+          P8: thumb_tucky
+          P9: thumb_reachy
