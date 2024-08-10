@@ -1,0 +1,15 @@
+{
+    "name": "keeb",
+    "version": "0.0.1",
+    "author": "Amandeep Singh <amandeepspdhr@gmail.com>",
+    "scripts": {
+        "build": "ergogen -d .",
+        "watch": "nodemon --exec 'npm run build' --watch *.yaml"
+    },
+    "dependencies": {
+        "ergogen": "^4.1.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.4"
+    }
+}
